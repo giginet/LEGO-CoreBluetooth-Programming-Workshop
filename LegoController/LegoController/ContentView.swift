@@ -7,6 +7,41 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            HStack{
+                Button{
+
+                }label:{
+                    Label("Turn Left", systemImage: "arrowshape.left.fill")
+                        .font(.largeTitle)
+                        .labelStyle(.iconOnly)
+                        .padding()
+                        .background(.blue)
+                        .foregroundStyle(.thickMaterial)
+                        .clipShape(Circle())
+                }
+                Button{
+
+                }label:{
+                    Label("ahead", systemImage: "arrowshape.up.fill")
+                        .font(.largeTitle)
+                        .labelStyle(.iconOnly)
+                        .padding()
+                        .background(.blue)
+                        .foregroundStyle(.thickMaterial)
+                        .clipShape(Circle())
+                }
+                Button{
+
+                }label:{
+                    Label("Turn Right", systemImage: "arrowshape.right.fill")
+                        .font(.largeTitle)
+                        .labelStyle(.iconOnly)
+                        .padding()
+                        .background(.blue)
+                        .foregroundStyle(.thickMaterial)
+                        .clipShape(Circle())
+                }
+            }
             HStack {
                 if hub.isReady {
                     Text(hub.connectingPeripheral?.name ?? "No name")

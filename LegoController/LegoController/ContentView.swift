@@ -5,6 +5,7 @@ import LWPKit
 struct ContentView: View {
     @StateObject var hub = Hub()
     @State var hexString = "08 00 81 00 11 51 00 32"
+    @State var car: Car?
 
     @State var speed: Float = 0.0
     var body: some View {
@@ -158,6 +159,9 @@ struct ContentView: View {
                 }
                 .disabled(!hub.isReady)
             }.padding(.bottom)
+        }
+        .onAppear {
+            self.car = Car(hub: hub)
         }
         .padding()
     }

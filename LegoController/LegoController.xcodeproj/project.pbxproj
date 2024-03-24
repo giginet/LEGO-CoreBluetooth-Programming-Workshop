@@ -16,6 +16,7 @@
 		074F35322BAFBBBB00278F25 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F35312BAFBBBB00278F25 /* MyApp.swift */; };
 		0788FDE82BAFCC4400D4299C /* Hex+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0788FDE72BAFCC4400D4299C /* Hex+Controller.swift */; };
 		0788FDEA2BAFCCAA00D4299C /* Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0788FDE92BAFCCAA00D4299C /* Actions.swift */; };
+		BF211C0E2BAFDA73009BB919 /* iphoneScreenshot.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BF211C0D2BAFDA73009BB919 /* iphoneScreenshot.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		0788FDE62BAFC0E000D4299C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0788FDE72BAFCC4400D4299C /* Hex+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Hex+Controller.swift"; sourceTree = "<group>"; };
 		0788FDE92BAFCCAA00D4299C /* Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actions.swift; sourceTree = "<group>"; };
+		BF211C0D2BAFDA73009BB919 /* iphoneScreenshot.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = iphoneScreenshot.jpeg; sourceTree = "<group>"; };
+		BF211C0F2BAFDB53009BB919 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				074F35312BAFBBBB00278F25 /* MyApp.swift */,
 				074F35262BAFBB7B00278F25 /* Assets.xcassets */,
 				074F35282BAFBB7B00278F25 /* LegoController.entitlements */,
+				BF211C0D2BAFDA73009BB919 /* iphoneScreenshot.jpeg */,
+				BF211C0F2BAFDB53009BB919 /* README.md */,
 				074F35292BAFBB7B00278F25 /* Preview Content */,
 				0788FDE72BAFCC4400D4299C /* Hex+Controller.swift */,
 				071FFA552BAFD54E004BFFF4 /* Car.swift */,
@@ -161,6 +166,7 @@
 			files = (
 				074F352B2BAFBB7B00278F25 /* Preview Assets.xcassets in Resources */,
 				074F35272BAFBB7B00278F25 /* Assets.xcassets in Resources */,
+				BF211C0E2BAFDA73009BB919 /* iphoneScreenshot.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,7 +23,7 @@ public final class Hub: NSObject, ObservableObject {
         guard centralManager.state == .poweredOn else { return }
         
         // Step 1: Scan
-        // centralManager.scanForPeripherals(withServices: nil)
+         centralManager.scanForPeripherals(withServices: nil)
         // or
         // centralManager.scanForPeripherals(withServices: [serviceUUID])
     }
@@ -48,11 +48,11 @@ extension Hub: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Found:", peripheral.name ?? "No name", RSSI)
         
-        if connectingPeripheral == nil /* && peripheral.name == "YOUR_HUB_NAME" */ {
+        if connectingPeripheral == nil && peripheral.name == "LEGO Hub@10" {
             connectingPeripheral = peripheral
             
             // Step 2: Connect
-            // centralManager.connect(peripheral)
+            centralManager.connect(peripheral)
         }
     }
     
@@ -61,7 +61,7 @@ extension Hub: CBCentralManagerDelegate {
         peripheral.delegate = self
         
         // Step 3: Discover Service
-        // peripheral.discoverServices(nil)
+//        peripheral.discoverServices(nil)
         // or
         // peripheral.discoverServices([serviceUUID])
     }

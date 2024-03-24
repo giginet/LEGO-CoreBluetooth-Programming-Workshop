@@ -5,6 +5,7 @@ import LWPKit
 struct ContentView: View {
     @StateObject var hub = Hub()
     @State var hexString = "08 00 81 00 11 51 00 32"
+    @State var car: Car?
 
     @State var speed: Float = 0.0
     var body: some View {
@@ -12,7 +13,7 @@ struct ContentView: View {
             Text("Direction")
             HStack{
                 Button{
-                    hub.run(.moveLeftMotor(0.5))
+                    car?.runLeft()
                 }label:{
                     Label("Turn Left", systemImage: "arrowshape.left.fill")
                         .font(.largeTitle)
@@ -23,11 +24,7 @@ struct ContentView: View {
                         .clipShape(Circle())
                 }
                 Button{
-                    let power0 = try! StartPower(portID: 0, power: 50).data()
-                    let power1 = try! StartPower(portID: 1, power: -50).data()
-                    
-                    hub.write(power0)
-                    hub.write(power1)
+                    car?.runForward()
                 }label:{
                     Label("ahead", systemImage: "arrowshape.up.fill")
                         .font(.largeTitle)
@@ -38,7 +35,7 @@ struct ContentView: View {
                         .clipShape(Circle())
                 }
                 Button{
-
+                    car?.runRight()
                 }label:{
                     Label("Turn Right", systemImage: "arrowshape.right.fill")
                         .font(.largeTitle)
@@ -138,6 +135,9 @@ struct ContentView: View {
                 }
                 .disabled(!hub.isReady)
             }
+        }
+        .onAppear {
+            self.car = Car(hub: hub)
         }
         .padding()
     }

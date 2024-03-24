@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "lwpkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bricklife/LWPKit.git",
+      "state" : {
+        "revision" : "4c7613bd06560f9de39be28e70ba4ef71be673a2",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}

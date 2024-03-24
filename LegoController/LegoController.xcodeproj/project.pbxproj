@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0710162B2BAFBD57002CF4EC /* LEGOKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0710162A2BAFBD57002CF4EC /* LEGOKit */; };
 		071FFA542BAFD129004BFFF4 /* LWPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 071FFA532BAFD129004BFFF4 /* LWPKit */; };
+		071FFA562BAFD54E004BFFF4 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071FFA552BAFD54E004BFFF4 /* Car.swift */; };
 		074F35252BAFBB7A00278F25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F35242BAFBB7A00278F25 /* ContentView.swift */; };
 		074F35272BAFBB7B00278F25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074F35262BAFBB7B00278F25 /* Assets.xcassets */; };
 		074F352B2BAFBB7B00278F25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074F352A2BAFBB7B00278F25 /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		071016282BAFBD43002CF4EC /* LEGOKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = LEGOKit; path = ../LEGOKit; sourceTree = "<group>"; };
+		071FFA552BAFD54E004BFFF4 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		074F351F2BAFBB7A00278F25 /* LegoController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LegoController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		074F35242BAFBB7A00278F25 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		074F35262BAFBB7B00278F25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				074F35282BAFBB7B00278F25 /* LegoController.entitlements */,
 				074F35292BAFBB7B00278F25 /* Preview Content */,
 				0788FDE72BAFCC4400D4299C /* Hex+Controller.swift */,
+				071FFA552BAFD54E004BFFF4 /* Car.swift */,
 			);
 			path = LegoController;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				0788FDE82BAFCC4400D4299C /* Hex+Controller.swift in Sources */,
 				0788FDEA2BAFCCAA00D4299C /* Actions.swift in Sources */,
+				071FFA562BAFD54E004BFFF4 /* Car.swift in Sources */,
 				074F35252BAFBB7A00278F25 /* ContentView.swift in Sources */,
 				074F35322BAFBBBB00278F25 /* MyApp.swift in Sources */,
 			);

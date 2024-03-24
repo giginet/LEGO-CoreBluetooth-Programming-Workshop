@@ -5,21 +5,21 @@ private let serviceUUID = CBUUID(string: "00001623-1212-EFDE-1623-785FEABCD123")
 private let characteristicUUID = CBUUID(string: "00001624-1212-EFDE-1623-785FEABCD123")
 
 @MainActor
-final class Hub: NSObject, ObservableObject {
+public final class Hub: NSObject, ObservableObject {
     private let centralManager = CBCentralManager()
     
-    @Published var isConnecting = false
-    @Published var isReady = false
-    @Published var connectingPeripheral: CBPeripheral?
+    @Published public var isConnecting = false
+    @Published public var isReady = false
+    @Published public var connectingPeripheral: CBPeripheral?
     private weak var lwpCharacteristic: CBCharacteristic?
     
-    override init() {
+    public override init() {
         super.init()
         centralManager.delegate = self
         centralManager.publisher(for: \.isScanning).assign(to: &$isConnecting)
     }
     
-    func connect() {
+    public func connect() {
         guard centralManager.state == .poweredOn else { return }
         
         // Step 1: Scan
@@ -28,12 +28,12 @@ final class Hub: NSObject, ObservableObject {
         // centralManager.scanForPeripherals(withServices: [serviceUUID])
     }
     
-    func cancelConnecting() {
+    public func cancelConnecting() {
         centralManager.stopScan()
         disconnect()
     }
     
-    func disconnect() {
+    public func disconnect() {
         if let peripheral = connectingPeripheral {
             centralManager.cancelPeripheralConnection(peripheral)
         }
@@ -41,11 +41,11 @@ final class Hub: NSObject, ObservableObject {
 }
 
 extension Hub: CBCentralManagerDelegate {
-    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         print(central.state)
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Found:", peripheral.name ?? "No name", RSSI)
         
         if connectingPeripheral == nil /* && peripheral.name == "YOUR_HUB_NAME" */ {
@@ -56,7 +56,7 @@ extension Hub: CBCentralManagerDelegate {
         }
     }
     
-    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+    public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print(#function)
         peripheral.delegate = self
         
@@ -66,12 +66,12 @@ extension Hub: CBCentralManagerDelegate {
         // peripheral.discoverServices([serviceUUID])
     }
     
-    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         print(#function)
         connectingPeripheral = nil
     }
     
-    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+    public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         print(#function)
         connectingPeripheral = nil
         isReady = false
@@ -79,7 +79,7 @@ extension Hub: CBCentralManagerDelegate {
 }
 
 extension Hub: CBPeripheralDelegate {
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print(#function)
         guard let service = peripheral.services?.first(where: { $0.uuid == serviceUUID }) else {
             centralManager.cancelPeripheralConnection(peripheral)
@@ -92,7 +92,7 @@ extension Hub: CBPeripheralDelegate {
         // peripheral.discoverCharacteristics([characteristicUUID], for: service)
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         print(#function)
         guard let characteristic = service.characteristics?.first(where: { $0.uuid == characteristicUUID }) else {
             centralManager.cancelPeripheralConnection(peripheral)
@@ -106,13 +106,13 @@ extension Hub: CBPeripheralDelegate {
         // peripheral.setNotifyValue(true, for: characteristic)
     }
     
-    func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         print("[notify]", characteristic.value?.hexString ?? "")
     }
 }
 
 extension Hub {
-    func write(_ data: Data) {
+    public func write(_ data: Data) {
         guard let connectingPeripheral, let lwpCharacteristic else { return }
         print("[write]", data.hexString)
         

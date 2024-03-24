@@ -1,4 +1,5 @@
 import SwiftUI
+import LEGOKit
 
 struct ContentView: View {
     @StateObject var hub = Hub()

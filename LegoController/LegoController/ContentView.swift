@@ -169,6 +169,9 @@ struct ContentView: View {
         .onAppear {
             self.car = Car(hub: hub)
         }
+        .onChange(of: speed) {
+            car?.speed = speed
+        }
         .padding()
     }
 }

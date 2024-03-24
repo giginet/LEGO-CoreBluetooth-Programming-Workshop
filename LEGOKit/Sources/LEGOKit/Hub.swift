@@ -8,6 +8,7 @@ private let characteristicUUID = CBUUID(string: "00001624-1212-EFDE-1623-785FEAB
 public final class Hub: NSObject, ObservableObject {
     private let centralManager = CBCentralManager()
     
+    @Published public var deviceName: String?
     @Published public var isConnecting = false
     @Published public var isReady = false
     @Published public var connectingPeripheral: CBPeripheral?
@@ -48,10 +49,11 @@ extension Hub: CBCentralManagerDelegate {
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print("Found:", peripheral.name ?? "No name", RSSI)
         
-        if connectingPeripheral == nil && peripheral.name == "LEGO Hub@10" {
+        if connectingPeripheral == nil && peripheral.name == "LEGO Hub@AF2" {
             connectingPeripheral = peripheral
             
             // Step 2: Connect
+            print("connected!!!")
             centralManager.connect(peripheral)
         }
     }
@@ -63,7 +65,7 @@ extension Hub: CBCentralManagerDelegate {
         // Step 3: Discover Service
 //        peripheral.discoverServices(nil)
         // or
-        // peripheral.discoverServices([serviceUUID])
+        peripheral.discoverServices([serviceUUID])
     }
     
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -89,7 +91,7 @@ extension Hub: CBPeripheralDelegate {
         // Step 4: Discover Characteristic
         // peripheral.discoverCharacteristics(nil, for: service)
         // or
-        // peripheral.discoverCharacteristics([characteristicUUID], for: service)
+        peripheral.discoverCharacteristics([characteristicUUID], for: service)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
@@ -103,7 +105,7 @@ extension Hub: CBPeripheralDelegate {
         isReady = true
         
         // Step 6: Enable Notifications
-        // peripheral.setNotifyValue(true, for: characteristic)
+        peripheral.setNotifyValue(true, for: characteristic)
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -119,7 +121,7 @@ extension Hub {
         // Step 5: Write
         // connectingPeripheral.writeValue(data, for: lwpCharacteristic, type: .withResponse)
         // or
-        // connectingPeripheral.writeValue(data, for: lwpCharacteristic, type: .withoutResponse)
+        connectingPeripheral.writeValue(data, for: lwpCharacteristic, type: .withoutResponse)
     }
 }
 

@@ -1,12 +1,20 @@
 import Foundation
 
+enum Direction {
+    case clockwise
+    case anticlockwise
+}
+
 enum Action {
     case moveLeftMotor(Float)
+    case moveRightMotor(Float)
     
     var hexString: String {
         switch self {
         case .moveLeftMotor(let power):
-            "08 00 81 00 11 51 00 \(power.hexString)"
+            "08 00 81 00 11 51 00 \(power.hexString)" // clockwise
+        case .moveRightMotor(let power):
+            "08 00 81 01 11 51 00 \(power.hexString)"
         }
     }
 }
@@ -25,6 +33,6 @@ extension Float {
 
 extension Float {
     var hexString: String {
-        String(floor(self * 64))
+        String(Int(floor(self * 64)))
     }
 }

@@ -1,5 +1,6 @@
 import SwiftUI
 import LEGOKit
+import LWPKit
 
 struct ContentView: View {
     @StateObject var hub = Hub()
@@ -11,7 +12,7 @@ struct ContentView: View {
             Text("Direction")
             HStack{
                 Button{
-
+                    hub.run(.moveLeftMotor(0.5))
                 }label:{
                     Label("Turn Left", systemImage: "arrowshape.left.fill")
                         .font(.largeTitle)
@@ -22,7 +23,11 @@ struct ContentView: View {
                         .clipShape(Circle())
                 }
                 Button{
-
+                    let power0 = try! StartPower(portID: 0, power: 50).data()
+                    let power1 = try! StartPower(portID: 1, power: -50).data()
+                    
+                    hub.write(power0)
+                    hub.write(power1)
                 }label:{
                     Label("ahead", systemImage: "arrowshape.up.fill")
                         .font(.largeTitle)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0710162B2BAFBD57002CF4EC /* LEGOKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0710162A2BAFBD57002CF4EC /* LEGOKit */; };
+		071FFA542BAFD129004BFFF4 /* LWPKit in Frameworks */ = {isa = PBXBuildFile; productRef = 071FFA532BAFD129004BFFF4 /* LWPKit */; };
 		074F35252BAFBB7A00278F25 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074F35242BAFBB7A00278F25 /* ContentView.swift */; };
 		074F35272BAFBB7B00278F25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074F35262BAFBB7B00278F25 /* Assets.xcassets */; };
 		074F352B2BAFBB7B00278F25 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 074F352A2BAFBB7B00278F25 /* Preview Assets.xcassets */; };
@@ -35,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0710162B2BAFBD57002CF4EC /* LEGOKit in Frameworks */,
+				071FFA542BAFD129004BFFF4 /* LWPKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +109,7 @@
 			name = LegoController;
 			packageProductDependencies = (
 				0710162A2BAFBD57002CF4EC /* LEGOKit */,
+				071FFA532BAFD129004BFFF4 /* LWPKit */,
 			);
 			productName = LegoController;
 			productReference = 074F351F2BAFBB7A00278F25 /* LegoController.app */;
@@ -136,6 +139,9 @@
 				Base,
 			);
 			mainGroup = 074F35162BAFBB7A00278F25;
+			packageReferences = (
+				071FFA522BAFD129004BFFF4 /* XCRemoteSwiftPackageReference "LWPKit" */,
+			);
 			productRefGroup = 074F35202BAFBB7A00278F25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -391,10 +397,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		071FFA522BAFD129004BFFF4 /* XCRemoteSwiftPackageReference "LWPKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bricklife/LWPKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		0710162A2BAFBD57002CF4EC /* LEGOKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LEGOKit;
+		};
+		071FFA532BAFD129004BFFF4 /* LWPKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 071FFA522BAFD129004BFFF4 /* XCRemoteSwiftPackageReference "LWPKit" */;
+			productName = LWPKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

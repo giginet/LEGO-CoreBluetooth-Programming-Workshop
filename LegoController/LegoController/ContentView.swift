@@ -41,14 +41,13 @@ struct ContentView: View {
                     }
                 }.buttonStyle(.borderedProminent)
             }
-
             VStack{
                 GroupBox(label:
                             Label("Direction", systemImage: "arrow.up.and.down.and.arrow.left.and.right")
                 ){
                     HStack{
                         Button{
-                            hub.run(.moveLeftMotor(0.5))
+                            car?.runLeft()
                         }label:{
                             Label("Turn Left", systemImage: "arrowshape.left.fill")
                                 .font(.largeTitle)
@@ -59,11 +58,7 @@ struct ContentView: View {
                                 .clipShape(Circle())
                         }
                         Button{
-                            let power0 = try! StartPower(portID: 0, power: 50).data()
-                            let power1 = try! StartPower(portID: 1, power: -50).data()
-
-                            hub.write(power0)
-                            hub.write(power1)
+                            car?.runForward()
                         }label:{
                             Label("ahead", systemImage: "arrowshape.up.fill")
                                 .font(.largeTitle)
@@ -74,7 +69,18 @@ struct ContentView: View {
                                 .clipShape(Circle())
                         }
                         Button{
-
+                            car?.runBackward()
+                        }label:{
+                            Label("back", systemImage: "arrowshape.down.fill")
+                                .font(.largeTitle)
+                                .labelStyle(.iconOnly)
+                                .padding()
+                                .background(.blue)
+                                .foregroundStyle(.thickMaterial)
+                                .clipShape(Circle())
+                        }
+                        Button{
+                            car?.runRight()
                         }label:{
                             Label("Turn Right", systemImage: "arrowshape.right.fill")
                                 .font(.largeTitle)
@@ -144,7 +150,7 @@ struct ContentView: View {
                 }
             }.frame(maxHeight: .infinity, alignment: .top)
 
-            
+
             Divider()
                 .padding()
 
